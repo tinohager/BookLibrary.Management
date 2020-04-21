@@ -1,0 +1,39 @@
+<template>
+    <div>
+      <el-form>
+        <el-form-item>
+          <el-input placeholder="Name" v-model="name"></el-input>
+        </el-form-item>
+        <el-form-item>
+            <el-button type="primary" @click="create">Add</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+</template>
+
+<script>
+export default {
+  name: 'AuthorAdd',
+  data () {
+    return {
+      name: null
+    }
+  },
+  methods: {
+    async create () {
+      try {
+        await this.axios.post('api/Authors', {
+          name: this.name
+        })
+
+        this.$emit('reload')
+      } catch (error) {
+        this.$notify.error({
+          title: 'Error',
+          message: error.response.data.title
+        })
+      }
+    }
+  }
+}
+</script>

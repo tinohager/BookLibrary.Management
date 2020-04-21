@@ -1,0 +1,67 @@
+<template>
+    <div>
+      <el-form label-width="120px">
+        <el-form-item label="Select user">
+          <el-button type="info" @click="chooseAdmin">Admin</el-button>
+          <el-button type="info" @click="chooseCustomer1">Customer 1</el-button>
+          <el-button type="info" @click="chooseCustomer2">Customer 2</el-button>
+        </el-form-item>
+        <el-form-item label="Email">
+          <el-input placeholder="email" v-model="email"></el-input>
+        </el-form-item>
+        <el-form-item label="Password">
+          <el-input placeholder="password" v-model="password" show-password></el-input>
+        </el-form-item>
+        <el-form-item>
+            <el-button type="primary" @click="authenticate">Authenticate</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+</template>
+
+<script>
+// import axios from 'axios'
+export default {
+  name: 'AuthenticateForm',
+  data () {
+    return {
+      email: null,
+      password: null
+    }
+  },
+  methods: {
+    chooseAdmin () {
+      this.email = 'admin@booklibrary.com'
+      this.password = 'admin'
+    },
+    chooseCustomer1 () {
+      this.email = 'customer1@booklibrary.com'
+      this.password = 'customer1'
+    },
+    chooseCustomer2 () {
+      this.email = 'customer2@booklibrary.com'
+      this.password = 'customer2'
+    },
+    async authenticate () {
+      try {
+        const response = await this.axios.post('api/Authentication/Authenticate', {
+          email: this.email,
+          password: this.password
+        })
+
+        this.axios.defaults.headers.common.authorization = `Bearer ${response.data.token}`
+
+        this.$notify.info({
+          title: 'Success',
+          message: 'Authenticate successful'
+        })
+      } catch (error) {
+        this.$notify.error({
+          title: 'Error',
+          message: error.response.data.title
+        })
+      }
+    }
+  }
+}
+</script>
