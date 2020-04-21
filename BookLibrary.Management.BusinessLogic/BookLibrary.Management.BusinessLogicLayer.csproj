@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nager.AmazonProductAdvertising" Version="2.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookLibrary.Management.Contract\BookLibrary.Management.Contract.csproj" />
+    <ProjectReference Include="..\BookLibrary.Management.DataAccessLayer\BookLibrary.Management.DataAccessLayer.csproj" />
+  </ItemGroup>
+
+</Project>
