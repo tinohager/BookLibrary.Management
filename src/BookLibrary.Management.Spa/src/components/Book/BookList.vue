@@ -4,6 +4,14 @@
         :data="items">
         <el-table-column
           prop="id"
+          label="Image"
+          width="80">
+            <template slot-scope="scope">
+              <span><img :src="'https://cover.ekz.de/' + scope.row.id + '.jpg'" width="40" /></span>
+            </template>
+        </el-table-column>
+        <el-table-column
+          prop="id"
           label="Id / ISBN"
           width="180">
         </el-table-column>
