@@ -77,7 +77,7 @@ namespace BookLibrary.Management.DataAccessLayer
                     return false;
                 }
 
-                if (endDate >= rentalHistory.StartDate)
+                if (endDate <= rentalHistory.StartDate)
                 {
                     return false;
                 }
