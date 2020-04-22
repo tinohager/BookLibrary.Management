@@ -3,8 +3,8 @@
 This is a simple prototype for a library management. You can create books, authors, publisher, customers. The books can borrow a customer.
 
 - asp.net core 3 Backend
-- vue frontend with element-ui
-- ef core dal
+- [vue](https://github.com/vuejs/vue) frontend with [element-ui](https://github.com/ElemeFE/element)
+- ef core
 
 ## Requirements
 
