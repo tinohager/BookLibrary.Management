@@ -8,6 +8,6 @@ namespace BookLibrary.Management.BusinessLogicLayer.BorrowService
         public int CustomerId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public double FeePrice { get; set; }
+        public decimal FeePrice { get; set; }
     }
 }
