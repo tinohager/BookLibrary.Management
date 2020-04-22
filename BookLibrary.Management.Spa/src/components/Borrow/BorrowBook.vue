@@ -2,6 +2,13 @@
   <div>
     <el-form :model="borrowInfo" ref="ruleForm">
       <el-form-item label="Book">
+        <el-date-picker
+        v-model="borrowInfo.startDate"
+        type="date"
+        placeholder="Pick a day">
+        </el-date-picker>
+      </el-form-item>
+      <el-form-item label="Book">
           <el-select v-model="borrowInfo.bookId" filterable placeholder="Select">
           <el-option
               v-for="item in books"
@@ -39,6 +46,7 @@ export default {
     }
   },
   mounted () {
+    this.borrowInfo.customerId = this.customerId
     this.getBooks()
   },
   methods: {
@@ -55,10 +63,6 @@ export default {
     },
     async borrow () {
       try {
-        const today = new Date().toISOString()
-        this.borrowInfo.customerId = this.customerId
-        this.borrowInfo.startDate = today
-
         await this.axios.post('/api/Borrows', this.borrowInfo)
 
         this.$notify.info({

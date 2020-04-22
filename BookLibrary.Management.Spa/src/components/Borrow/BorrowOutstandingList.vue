@@ -21,7 +21,7 @@
         </el-table-column>
         <el-table-column
           prop="feePrice"
-          label="FeePrice">
+          label="FeePrice (€)">
         </el-table-column>
       </el-table>
     </div>
