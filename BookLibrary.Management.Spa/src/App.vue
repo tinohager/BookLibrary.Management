@@ -5,10 +5,20 @@
         <el-menu class="el-menu-demo" mode="horizontal" :router="true" :default-active="this.$route.path">
           <el-menu-item index="/">Home</el-menu-item>
           <el-menu-item index="/book">Book</el-menu-item>
-          <el-menu-item index="/customer">Customer</el-menu-item>
           <el-menu-item index="/publisher">Publisher</el-menu-item>
           <el-menu-item index="/author">Author</el-menu-item>
-          <el-menu-item index="/borrow">Borrow</el-menu-item>
+          <el-menu-item index="/customer">
+            <template slot="title">
+              <i class="el-icon-lock"></i>
+              <span>Customer</span>
+            </template>
+          </el-menu-item>
+          <el-menu-item index="/borrow">
+            <template slot="title">
+              <i class="el-icon-lock"></i>
+              <span>Borrow</span>
+            </template>
+          </el-menu-item>
           <el-menu-item index="/authenticate">Authenticate</el-menu-item>
         </el-menu>
       </el-header>

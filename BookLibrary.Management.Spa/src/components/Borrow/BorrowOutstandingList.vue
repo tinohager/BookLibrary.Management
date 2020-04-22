@@ -23,6 +23,14 @@
           prop="feePrice"
           label="FeePrice (€)">
         </el-table-column>
+        <el-table-column
+          fixed="right"
+          label="Operations"
+          width="120">
+          <template slot-scope="scope">
+            <router-link :to="'customer/' + scope.row.id"><el-button type="primary">Detail</el-button></router-link>
+          </template>
+        </el-table-column>
       </el-table>
     </div>
 </template>

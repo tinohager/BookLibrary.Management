@@ -2,7 +2,7 @@
   <div>
     <h1>Author</h1>
 
-    <el-button type="primary" @click="visible = true">Add</el-button>
+    <el-button type="primary" @click="visible = true">Add <i class="el-icon-lock"></i></el-button>
     <el-dialog :visible.sync="visible" title="Add an Author">
       <author-add @reload="reload"></author-add>
     </el-dialog>

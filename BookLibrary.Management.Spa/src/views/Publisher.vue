@@ -2,7 +2,7 @@
   <div>
     <h1>Publisher</h1>
 
-    <el-button type="primary" @click="visible = true">Add</el-button>
+    <el-button type="primary" @click="visible = true">Add <i class="el-icon-lock"></i></el-button>
     <el-dialog :visible.sync="visible" title="Add a Publisher">
       <publisher-add @reload="reload"></publisher-add>
     </el-dialog>
