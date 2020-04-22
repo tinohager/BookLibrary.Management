@@ -3,33 +3,25 @@
       <el-table
         :data="items">
         <el-table-column
-          prop="id"
-          label="Id"
+          prop="bookId"
+          label="BookId"
           width="180">
         </el-table-column>
         <el-table-column
-          prop="firstname"
-          label="Firstname">
+          prop="customerId"
+          label="CustomerId">
         </el-table-column>
         <el-table-column
-          prop="surname"
-          label="Surname">
+          prop="startDate"
+          label="StartDate">
         </el-table-column>
         <el-table-column
-          prop="postalCode"
-          label="PostalCode">
+          prop="endDate"
+          label="EndDate">
         </el-table-column>
         <el-table-column
-          prop="city"
-          label="City">
-        </el-table-column>
-        <el-table-column
-          fixed="right"
-          label="Operations"
-          width="120">
-          <template slot-scope="scope">
-            <router-link :to="'customer/' + scope.row.id"><el-button type="primary">Detail</el-button></router-link>
-          </template>
+          prop="feePrice"
+          label="FeePrice">
         </el-table-column>
       </el-table>
     </div>
@@ -37,7 +29,7 @@
 
 <script>
 export default {
-  name: 'CustomerList',
+  name: 'BorrowOutstandingList',
   data () {
     return {
       loading: true,
@@ -50,7 +42,7 @@ export default {
   methods: {
     async getItems () {
       this.loading = true
-      const response = await this.axios.get('api/Customers')
+      const response = await this.axios.get('api/Borrows/Outstanding')
       this.items = response.data
     }
   }

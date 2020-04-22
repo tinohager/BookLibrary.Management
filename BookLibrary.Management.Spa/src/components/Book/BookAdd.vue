@@ -46,7 +46,7 @@ export default {
         isbn: null,
         title: '',
         authorIds: [],
-        publisherId: null,
+        publisherId: 1,
         abstract: null,
         bookCount: 1
       },
