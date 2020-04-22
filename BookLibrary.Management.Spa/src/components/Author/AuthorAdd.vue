@@ -5,7 +5,7 @@
           <el-input placeholder="Name" v-model="name"></el-input>
         </el-form-item>
         <el-form-item>
-            <el-button type="primary" @click="create">Add</el-button>
+            <el-button type="primary" @click="add">Add</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -20,7 +20,7 @@ export default {
     }
   },
   methods: {
-    async create () {
+    async add () {
       try {
         await this.axios.post('api/Authors', {
           name: this.name
