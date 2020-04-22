@@ -4,24 +4,39 @@
         :data="items">
         <el-table-column
           prop="bookId"
-          label="BookId"
-          width="180">
+          label="Book">
+            <template slot-scope="scope">
+              <span><strong>{{ scope.row.bookTitle }}</strong><br />{{ scope.row.bookId }}</span>
+            </template>
         </el-table-column>
         <el-table-column
           prop="customerId"
-          label="CustomerId">
+          label="CustomerId"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          prop="customerName"
+          label="Customer Name">
         </el-table-column>
         <el-table-column
           prop="startDate"
-          label="StartDate">
+          label="Start Date">
+            <template slot-scope="scope">
+              <span class="date">{{ scope.row.startDate }}</span>
+            </template>
         </el-table-column>
         <el-table-column
           prop="endDate"
-          label="EndDate">
+          label="End Date">
+        </el-table-column>
+        <el-table-column
+          prop="durationDays"
+          label="Borrow days"
+          sortable>
         </el-table-column>
         <el-table-column
           prop="feePrice"
-          label="FeePrice (€)">
+          label="Fee Price (€)">
         </el-table-column>
         <el-table-column
           fixed="right"
