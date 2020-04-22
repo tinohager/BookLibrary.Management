@@ -3,10 +3,30 @@
     <el-container>
       <el-header>
         <el-menu class="el-menu-demo" mode="horizontal" :router="true" :default-active="this.$route.path">
-          <el-menu-item index="/">Home</el-menu-item>
-          <el-menu-item index="/book">Book</el-menu-item>
-          <el-menu-item index="/publisher">Publisher</el-menu-item>
-          <el-menu-item index="/author">Author</el-menu-item>
+          <el-menu-item index="/">
+            <template slot="title">
+              <i class="el-icon-house"></i>
+              <span>Home</span>
+            </template>
+          </el-menu-item>
+          <el-menu-item index="/book">
+           <template slot="title">
+              <i class="el-icon-notebook-2"></i>
+              <span>Book</span>
+            </template>
+          </el-menu-item>
+          <el-menu-item index="/publisher">
+            <template slot="title">
+              <i class="el-icon-office-building"></i>
+              <span>Publisher</span>
+            </template>
+          </el-menu-item>
+          <el-menu-item index="/author">
+            <template slot="title">
+              <i class="el-icon-mic"></i>
+              <span>Author</span>
+            </template>
+          </el-menu-item>
           <el-menu-item index="/customer">
             <template slot="title">
               <i class="el-icon-lock"></i>
@@ -19,7 +39,12 @@
               <span>Borrow</span>
             </template>
           </el-menu-item>
-          <el-menu-item index="/authenticate">Authenticate</el-menu-item>
+          <el-menu-item index="/authenticate">
+            <template slot="title">
+              <i class="el-icon-user"></i>
+              <span>Authenticate</span>
+            </template>
+          </el-menu-item>
         </el-menu>
       </el-header>
       <el-container>
