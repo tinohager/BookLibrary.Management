@@ -4,7 +4,7 @@
         :data="items">
         <el-table-column
           prop="id"
-          label="Id"
+          label="Id / ISBN"
           width="180">
         </el-table-column>
         <el-table-column
@@ -14,6 +14,10 @@
         <el-table-column
           prop="abstract"
           label="Abstract">
+        </el-table-column>
+        <el-table-column
+          prop="bookCount"
+          label="Book Count">
         </el-table-column>
       </el-table>
     </div>

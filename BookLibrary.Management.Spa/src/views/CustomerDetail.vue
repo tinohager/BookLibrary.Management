@@ -1,6 +1,6 @@
 <template>
     <div>
-      CustomerId: {{id}}
+      <div class="customerInfo">CustomerId: {{id}}</div>
       <borrow-book :customer-id="parseInt(id)"></borrow-book>
     </div>
 </template>
@@ -16,3 +16,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.customerInfo {
+  margin-bottom: 20px;
+}
+</style>

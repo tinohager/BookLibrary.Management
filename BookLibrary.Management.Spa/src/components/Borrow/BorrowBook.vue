@@ -1,7 +1,7 @@
 <template>
   <div>
-    <el-form :model="borrowInfo" ref="ruleForm">
-      <el-form-item label="Book">
+    <el-form :model="borrowInfo" ref="ruleForm" label-width="120px">
+      <el-form-item label="Start Date">
         <el-date-picker
         v-model="borrowInfo.startDate"
         type="date"
@@ -67,12 +67,12 @@ export default {
 
         this.$notify.info({
           title: 'Success',
-          message: 'Add borrow successful'
+          message: 'Borrow successful'
         })
       } catch (error) {
         this.$notify.error({
           title: 'Error',
-          message: error.response.data.title
+          message: `Cannot borrow the book, ${error.response.data.title}`
         })
 
         this.errors = error.response.data.errors
