@@ -62,7 +62,7 @@ export default {
   methods: {
     async getAuthors () {
       try {
-        const response = await this.axios.get('api/Authors')
+        const response = await this.axios.get('/api/Authors')
         this.authors = response.data
       } catch (error) {
         this.$notify.error({
@@ -73,7 +73,7 @@ export default {
     },
     async getPublishers () {
       try {
-        const response = await this.axios.get('api/Publishers')
+        const response = await this.axios.get('/api/Publishers')
         this.publishers = response.data
       } catch (error) {
         this.$notify.error({
@@ -84,7 +84,7 @@ export default {
     },
     async add () {
       try {
-        await this.axios.post('api/Books', this.book)
+        await this.axios.post('/api/Books', this.book)
 
         this.$emit('reload')
       } catch (error) {

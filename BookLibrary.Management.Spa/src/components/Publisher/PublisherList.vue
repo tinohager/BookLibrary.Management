@@ -30,7 +30,7 @@ export default {
   methods: {
     async getItems () {
       this.loading = true
-      const response = await this.axios.get('api/Publishers')
+      const response = await this.axios.get('/api/Publishers')
       this.items = response.data
     }
   }

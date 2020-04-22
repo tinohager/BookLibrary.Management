@@ -22,7 +22,7 @@ export default {
   methods: {
     async add () {
       try {
-        await this.axios.post('api/Authors', {
+        await this.axios.post('/api/Authors', {
           name: this.name
         })
 

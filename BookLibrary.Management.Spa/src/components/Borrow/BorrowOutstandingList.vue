@@ -50,7 +50,7 @@ export default {
   methods: {
     async getItems () {
       this.loading = true
-      const response = await this.axios.get('api/Borrows/Outstanding')
+      const response = await this.axios.get('/api/Borrows/Outstanding')
       this.items = response.data
     },
     async returnBook (customerId, bookId, startDate) {

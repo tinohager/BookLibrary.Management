@@ -34,7 +34,7 @@ export default {
   methods: {
     async getItems () {
       this.loading = true
-      const response = await this.axios.get('api/Books')
+      const response = await this.axios.get('/api/Books')
       this.items = response.data
     }
   }
