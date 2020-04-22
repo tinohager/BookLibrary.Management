@@ -27,7 +27,7 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item>
+        <el-form-item label="Abstract">
           <el-input type="textarea" placeholder="Abstract" v-model="book.abstract"></el-input>
         </el-form-item>
         <el-form-item>
