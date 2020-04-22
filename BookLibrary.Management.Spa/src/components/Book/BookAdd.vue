@@ -1,6 +1,6 @@
 <template>
     <div>
-      <el-form :model="book" ref="ruleForm">
+      <el-form :model="book" ref="ruleForm" label-width="150px">
         <el-form-item label="ISBN">
           <el-input placeholder="ISBN" v-model="book.isbn"></el-input>
         </el-form-item>
@@ -29,6 +29,9 @@
         </el-form-item>
         <el-form-item label="Abstract">
           <el-input type="textarea" placeholder="Abstract" v-model="book.abstract"></el-input>
+        </el-form-item>
+        <el-form-item label="Number of copies">
+          <el-input placeholder="Number of copies" v-model="book.bookCount"></el-input>
         </el-form-item>
         <el-form-item>
             <el-button type="primary" @click="add">Add</el-button>
