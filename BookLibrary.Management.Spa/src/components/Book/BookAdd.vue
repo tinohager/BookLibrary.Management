@@ -31,7 +31,7 @@
           <el-input type="textarea" placeholder="Abstract" v-model="book.abstract"></el-input>
         </el-form-item>
         <el-form-item label="Number of copies">
-          <el-input placeholder="Number of copies" v-model="book.bookCount"></el-input>
+          <el-input type="number" placeholder="Number of copies" v-model.number="book.bookCount"></el-input>
         </el-form-item>
         <el-form-item>
             <el-button type="primary" @click="add">Add</el-button>
