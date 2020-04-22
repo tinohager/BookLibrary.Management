@@ -1,5 +1,10 @@
-# BookLibrary.Management
-Library Management
+# BookLibrary.Management (Library Management)
+
+This is a simple prototype for a library. You can create books, authors, publisher, customers. The books can borrow a customer.
+
+- asp.net core 3 Backend
+- vue frontend with element-ui
+- ef core dal
 
 ## Start a sql server with docker
 
