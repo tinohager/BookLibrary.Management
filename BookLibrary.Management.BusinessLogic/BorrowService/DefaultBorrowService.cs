@@ -12,17 +12,20 @@ namespace BookLibrary.Management.BusinessLogicLayer.BorrowService
     {
         private readonly IBorrowHistoryRepository _borrowHistoryRepository;
         private readonly IBorrowingFeeCalculation _borrowingFeeCalculation;
+        private readonly IBookRepository _bookRepository;
 
         public DefaultBorrowService(IBorrowHistoryRepository borrowHistoryRepository,
-            IBorrowingFeeCalculation borrowingFeeCalculation)
+            IBorrowingFeeCalculation borrowingFeeCalculation,
+            IBookRepository bookRepository)
         {
             this._borrowHistoryRepository = borrowHistoryRepository;
             this._borrowingFeeCalculation = borrowingFeeCalculation;
+            this._bookRepository = bookRepository;
         }
 
         public async Task<BorrowInfoDto[]> GetBorrowsAsync(int customerId, int take, int skip, CancellationToken cancellationToken = default)
         {
-            var items = await this._borrowHistoryRepository.GetBorrowsAsync(customerId, take, skip, cancellationToken);
+            var items = await this._borrowHistoryRepository.GetBorrowsFromCustomerAsync(customerId, take, skip, cancellationToken);
             return items.Select(o => this.Process(o)).ToArray();
         }
 
@@ -34,7 +37,7 @@ namespace BookLibrary.Management.BusinessLogicLayer.BorrowService
 
         public async Task<BorrowInfoDto[]> GetOutstandingBorrowsAsync(int customerId, int take, int skip, CancellationToken cancellationToken = default)
         {
-            var items = await this._borrowHistoryRepository.GetOutstandingBorrowsAsync(customerId, take, skip, cancellationToken);
+            var items = await this._borrowHistoryRepository.GetOutstandingBorrowsFromCustomerAsync(customerId, take, skip, cancellationToken);
             return items.Select(o => this.Process(o)).ToArray();
         }
 
@@ -47,6 +50,23 @@ namespace BookLibrary.Management.BusinessLogicLayer.BorrowService
 
         public async Task<bool> BorrowBookAsync(BorrowMediumDto borrowMedium, CancellationToken cancellationToken = default)
         {
+            if (borrowMedium.StartDate >= DateTime.Now)
+            {
+                return false;
+            }
+
+            var book = await this._bookRepository.GetAsync(borrowMedium.BookId);
+            if (book == null)
+            {
+                return false;
+            }
+
+            var outstandingBorrows = await this._borrowHistoryRepository.GetOutstandingBorrowsFromBookAsync(borrowMedium.BookId);
+            if (book.BookCount <= outstandingBorrows.Length)
+            {
+                return false;
+            }
+
             return await this._borrowHistoryRepository.BorrowBookAsync(borrowMedium.BookId, borrowMedium.CustomerId, borrowMedium.StartDate, cancellationToken);
         }
 

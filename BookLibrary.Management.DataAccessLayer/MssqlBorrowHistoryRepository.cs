@@ -26,7 +26,7 @@ namespace BookLibrary.Management.DataAccessLayer
             }
         }
 
-        public async Task<BorrowHistory[]> GetBorrowsAsync(int customerId, int take, int skip, CancellationToken cancellationToken = default)
+        public async Task<BorrowHistory[]> GetBorrowsFromCustomerAsync(int customerId, int take, int skip, CancellationToken cancellationToken = default)
         {
             using (var context = new BookLibraryContext(this._optionsBuilder.Options))
             {
@@ -34,7 +34,7 @@ namespace BookLibrary.Management.DataAccessLayer
             }
         }
 
-        public async Task<BorrowHistory[]> GetOutstandingBorrowsAsync(int customerId, int take, int skip, CancellationToken cancellationToken = default)
+        public async Task<BorrowHistory[]> GetOutstandingBorrowsFromCustomerAsync(int customerId, int take, int skip, CancellationToken cancellationToken = default)
         {
             using (var context = new BookLibraryContext(this._optionsBuilder.Options))
             {
@@ -87,6 +87,14 @@ namespace BookLibrary.Management.DataAccessLayer
                 await context.SaveChangesAsync(cancellationToken);
 
                 return true;
+            }
+        }
+
+        public async Task<BorrowHistory[]> GetOutstandingBorrowsFromBookAsync(string bookId, CancellationToken cancellationToken = default)
+        {
+            using (var context = new BookLibraryContext(this._optionsBuilder.Options))
+            {
+                return await context.BorrowHistories.Where(o => o.BookId == bookId && o.EndDate == null).ToArrayAsync();
             }
         }
     }
