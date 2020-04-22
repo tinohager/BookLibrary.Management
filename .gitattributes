@@ -1,2 +1,2 @@
 # Ignore following files for language details
-BookLibrary.Management.WebApi/wwwroot/styles.css linguist-vendored
+src/BookLibrary.Management.WebApi/wwwroot/styles.css linguist-vendored
