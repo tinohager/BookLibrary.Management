@@ -45,14 +45,14 @@ namespace BookLibrary.Management.BusinessLogicLayer.BorrowService
             return item;
         }
 
-        public async Task<bool> BorrowBookAsync(string bookId, int customerId, DateTime startDate, CancellationToken cancellationToken = default)
+        public async Task<bool> BorrowBookAsync(BorrowMediumDto borrowMedium, CancellationToken cancellationToken = default)
         {
-            return await this._borrowHistoryRepository.BorrowBookAsync(bookId, customerId, startDate, cancellationToken);
+            return await this._borrowHistoryRepository.BorrowBookAsync(borrowMedium.BookId, borrowMedium.CustomerId, borrowMedium.StartDate, cancellationToken);
         }
 
-        public async Task<bool> ReturnBookAsync(string bookId, int customerId, DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)
+        public async Task<bool> ReturnBookAsync(ReturnMediumDto returnMedium, CancellationToken cancellationToken = default)
         {
-            return await this._borrowHistoryRepository.ReturnBookAsync(bookId, customerId, startDate, endDate, cancellationToken);
+            return await this._borrowHistoryRepository.ReturnBookAsync(returnMedium.BookId, returnMedium.CustomerId, returnMedium.StartDate, returnMedium.EndDate, cancellationToken);
         }
     }
 }

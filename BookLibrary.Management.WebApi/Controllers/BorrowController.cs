@@ -1,17 +1,15 @@
 ﻿using BookLibrary.Management.BusinessLogicLayer.BookService;
 using BookLibrary.Management.BusinessLogicLayer.BorrowService;
-using BookLibrary.Management.Contract;
 using BookLibrary.Management.WebApi.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace BookLibrary.Management.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]s")]
     [ApiController]
     public class BorrowController : ControllerBase
     {
@@ -28,9 +26,7 @@ namespace BookLibrary.Management.WebApi.Controllers
         /// <summary>
         /// Borrow a book
         /// </summary>
-        /// <param name="bookId"></param>
-        /// <param name="customerId"></param>
-        /// <param name="startDate"></param>
+        /// <param name="borrowMedium"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [Authorize(Policy = "Admin")]
@@ -39,14 +35,14 @@ namespace BookLibrary.Management.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity, Type = typeof(ErrorDetailDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> BorrowBookAsync(string bookId, int customerId, DateTime startDate, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> BorrowBookAsync([FromBody]BorrowMediumDto borrowMedium, CancellationToken cancellationToken = default)
         {
-            if (!await this._bookService.CheckExistsAsync(bookId))
+            if (!await this._bookService.CheckExistsAsync(borrowMedium.BookId))
             {
                 return StatusCode(StatusCodes.Status422UnprocessableEntity, new ErrorDetailDto("BookId is unknown"));
             }
 
-            if (await this._borrowService.BorrowBookAsync(bookId, customerId, startDate, cancellationToken))
+            if (await this._borrowService.BorrowBookAsync(borrowMedium, cancellationToken))
             {
                 return StatusCode(StatusCodes.Status200OK);
             }
@@ -57,10 +53,7 @@ namespace BookLibrary.Management.WebApi.Controllers
         /// <summary>
         /// Return a book
         /// </summary>
-        /// <param name="bookId"></param>
-        /// <param name="customerId"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
+        /// <param name="returnMedium"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [Authorize(Policy = "Admin")]
@@ -68,9 +61,9 @@ namespace BookLibrary.Management.WebApi.Controllers
         [Route("")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> ReturnBookAsync(string bookId, int customerId, DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> ReturnBookAsync([FromBody]ReturnMediumDto returnMedium, CancellationToken cancellationToken = default)
         {
-            if (await this._borrowService.ReturnBookAsync(bookId, customerId, startDate, endDate, cancellationToken))
+            if (await this._borrowService.ReturnBookAsync(returnMedium, cancellationToken))
             {
                 return StatusCode(StatusCodes.Status200OK);
             }
