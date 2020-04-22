@@ -6,6 +6,17 @@ This is a simple prototype for a library management. You can create books, autho
 - vue frontend with element-ui
 - ef core dal
 
+## Requirements
+
+### API
+ - Visual Studio 2019
+ - mssql server (see docker)
+
+### SPA
+ - Visual Studio Code
+ - nodejs >= v12
+ - npm
+
 ## Start a sql server with docker
 
 Start Powershell and execute following command
