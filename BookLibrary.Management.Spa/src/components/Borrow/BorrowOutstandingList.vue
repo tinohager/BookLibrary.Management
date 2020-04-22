@@ -28,7 +28,7 @@
           label="Operations"
           width="120">
           <template slot-scope="scope">
-            <router-link :to="'customer/' + scope.row.id"><el-button type="primary">Detail</el-button></router-link>
+            <el-button type="primary" @click="returnBook(scope.row.customerId, scope.row.bookId, scope.row.startDate)">Return</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -52,6 +52,26 @@ export default {
       this.loading = true
       const response = await this.axios.get('api/Borrows/Outstanding')
       this.items = response.data
+    },
+    async returnBook (customerId, bookId, startDate) {
+      try {
+        await this.axios.put('/api/Borrows', {
+          bookId: bookId,
+          customerId: customerId,
+          startDate: startDate,
+          endDate: new Date().toISOString()
+        })
+        this.$notify.info({
+          title: 'Success',
+          message: 'Add borrow successful'
+        })
+        this.getItems()
+      } catch (error) {
+        this.$notify.error({
+          title: 'Error',
+          message: error.response.data.title
+        })
+      }
     }
   }
 }
