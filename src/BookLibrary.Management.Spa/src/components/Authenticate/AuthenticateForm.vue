@@ -1,29 +1,55 @@
 <template>
-    <div>
-
-      <div class="infoBox">
-        <span>Predefined logins are already available here for test purposes</span>
-        <el-form label-width="120px">
-          <el-form-item label="Select user">
-            <el-button type="info" @click="chooseAdmin">Admin</el-button>
-            <el-button type="info" @click="chooseCustomer1">Customer 1</el-button>
-            <el-button type="info" @click="chooseCustomer2">Customer 2</el-button>
-          </el-form-item>
-        </el-form>
-      </div>
-
+  <div>
+    <div class="infoBox">
+      <span>Predefined logins are already available here for test purposes</span>
       <el-form label-width="120px">
-        <el-form-item label="Email">
-          <el-input placeholder="email" v-model="email"></el-input>
-        </el-form-item>
-        <el-form-item label="Password">
-          <el-input placeholder="password" v-model="password" show-password></el-input>
-        </el-form-item>
-        <el-form-item>
-            <el-button type="primary" @click="authenticate">Authenticate</el-button>
+        <el-form-item label="Select user">
+          <el-button
+            type="info"
+            @click="chooseAdmin"
+          >
+            Admin
+          </el-button>
+          <el-button
+            type="info"
+            @click="chooseCustomer1"
+          >
+            Customer 1
+          </el-button>
+          <el-button
+            type="info"
+            @click="chooseCustomer2"
+          >
+            Customer 2
+          </el-button>
         </el-form-item>
       </el-form>
     </div>
+
+    <el-form label-width="120px">
+      <el-form-item label="Email">
+        <el-input
+          v-model="email"
+          placeholder="email"
+        />
+      </el-form-item>
+      <el-form-item label="Password">
+        <el-input
+          v-model="password"
+          placeholder="password"
+          show-password
+        />
+      </el-form-item>
+      <el-form-item>
+        <el-button
+          type="primary"
+          @click="authenticate"
+        >
+          Authenticate
+        </el-button>
+      </el-form-item>
+    </el-form>
+  </div>
 </template>
 
 <script>

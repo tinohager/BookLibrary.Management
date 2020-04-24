@@ -2,7 +2,7 @@
   <div>
     <h1>Borrow</h1>
 
-    <borrow-outstanding-list ref="list"></borrow-outstanding-list>
+    <borrow-outstanding-list ref="list" />
   </div>
 </template>
 

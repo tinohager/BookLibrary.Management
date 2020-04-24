@@ -1,18 +1,20 @@
 <template>
-    <div>
-      <el-table
-        :data="items">
-        <el-table-column
-          prop="id"
-          label="Id"
-          width="180">
-        </el-table-column>
-        <el-table-column
-          prop="name"
-          label="Name">
-        </el-table-column>
-      </el-table>
-    </div>
+  <div>
+    <el-table
+      v-loading="loading"
+      :data="items"
+    >
+      <el-table-column
+        prop="id"
+        label="Id"
+        width="180"
+      />
+      <el-table-column
+        prop="name"
+        label="Name"
+      />
+    </el-table>
+  </div>
 </template>
 
 <script>
@@ -20,7 +22,7 @@ export default {
   name: 'AuthorList',
   data () {
     return {
-      loading: true,
+      loading: false,
       items: null
     }
   },
@@ -32,6 +34,7 @@ export default {
       this.loading = true
       const response = await this.axios.get('/api/Authors')
       this.items = response.data
+      this.loading = false
     }
   }
 }

@@ -2,7 +2,7 @@
   <div>
     <h1>Customer</h1>
 
-    <customer-list ref="list"></customer-list>
+    <customer-list ref="list" />
   </div>
 </template>
 

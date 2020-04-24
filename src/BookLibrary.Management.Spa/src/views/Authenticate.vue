@@ -2,7 +2,7 @@
   <div>
     <h1>Authenticate</h1>
 
-    <authenticate-form></authenticate-form>
+    <authenticate-form />
   </div>
 </template>
 

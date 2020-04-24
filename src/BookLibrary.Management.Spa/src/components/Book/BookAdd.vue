@@ -1,43 +1,87 @@
 <template>
-    <div>
-      <el-form :model="book" ref="ruleForm" label-width="150px">
-        <el-form-item label="ISBN">
-          <el-input placeholder="ISBN" v-model="book.isbn"></el-input>
-        </el-form-item>
-        <el-form-item label="Title" prop="title" :error="getErrorForField('title')">
-          <el-input placeholder="Title" v-model="book.title"></el-input>
-        </el-form-item>
-        <el-form-item label="Publisher" prop="publisherId" :error="getErrorForField('publisherId')">
-          <el-select v-model="book.publisherId" filterable placeholder="Select">
-            <el-option
-              v-for="item in publishers"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id">
-            </el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="Author" prop="authorIds" :error="getErrorForField('authorIds')">
-          <el-select v-model="book.authorIds" filterable multiple placeholder="Select">
-            <el-option
-              v-for="item in authors"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id">
-            </el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="Abstract">
-          <el-input type="textarea" placeholder="Abstract" v-model="book.abstract"></el-input>
-        </el-form-item>
-        <el-form-item label="Number of copies">
-          <el-input type="number" placeholder="Number of copies" v-model.number="book.bookCount"></el-input>
-        </el-form-item>
-        <el-form-item>
-            <el-button type="primary" @click="add">Add</el-button>
-        </el-form-item>
-      </el-form>
-    </div>
+  <div>
+    <el-form
+      ref="ruleForm"
+      :model="book"
+      label-width="150px"
+    >
+      <el-form-item label="ISBN">
+        <el-input
+          v-model="book.isbn"
+          placeholder="ISBN"
+        />
+      </el-form-item>
+      <el-form-item
+        label="Title"
+        prop="title"
+        :error="getErrorForField('title')"
+      >
+        <el-input
+          v-model="book.title"
+          placeholder="Title"
+        />
+      </el-form-item>
+      <el-form-item
+        label="Publisher"
+        prop="publisherId"
+        :error="getErrorForField('publisherId')"
+      >
+        <el-select
+          v-model="book.publisherId"
+          filterable
+          placeholder="Select"
+        >
+          <el-option
+            v-for="item in publishers"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id"
+          />
+        </el-select>
+      </el-form-item>
+      <el-form-item
+        label="Author"
+        prop="authorIds"
+        :error="getErrorForField('authorIds')"
+      >
+        <el-select
+          v-model="book.authorIds"
+          filterable
+          multiple
+          placeholder="Select"
+        >
+          <el-option
+            v-for="item in authors"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id"
+          />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="Abstract">
+        <el-input
+          v-model="book.abstract"
+          type="textarea"
+          placeholder="Abstract"
+        />
+      </el-form-item>
+      <el-form-item label="Number of copies">
+        <el-input
+          v-model.number="book.bookCount"
+          type="number"
+          placeholder="Number of copies"
+        />
+      </el-form-item>
+      <el-form-item>
+        <el-button
+          type="primary"
+          @click="add"
+        >
+          Add
+        </el-button>
+      </el-form-item>
+    </el-form>
+  </div>
 </template>
 
 <script>
@@ -58,9 +102,9 @@ export default {
       publishers: []
     }
   },
-  mounted () {
-    this.getAuthors()
-    this.getPublishers()
+  async mounted () {
+    await this.getAuthors()
+    await this.getPublishers()
   },
   methods: {
     async getAuthors () {

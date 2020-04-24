@@ -1,25 +1,38 @@
 <template>
   <div>
-    <el-form :model="borrowInfo" ref="ruleForm" label-width="120px">
+    <el-form
+      ref="ruleForm"
+      :model="borrowInfo"
+      label-width="120px"
+    >
       <el-form-item label="Start Date">
         <el-date-picker
-        v-model="borrowInfo.startDate"
-        type="date"
-        placeholder="Pick a day">
-        </el-date-picker>
+          v-model="borrowInfo.startDate"
+          type="date"
+          placeholder="Pick a day"
+        />
       </el-form-item>
       <el-form-item label="Book">
-          <el-select v-model="borrowInfo.bookId" filterable placeholder="Select">
+        <el-select
+          v-model="borrowInfo.bookId"
+          filterable
+          placeholder="Select"
+        >
           <el-option
-              v-for="item in books"
-              :key="item.id"
-              :label="item.title"
-              :value="item.id">
-          </el-option>
-          </el-select>
+            v-for="item in books"
+            :key="item.id"
+            :label="item.title"
+            :value="item.id"
+          />
+        </el-select>
       </el-form-item>
       <el-form-item>
-          <el-button type="primary" @click="borrow">Borrow</el-button>
+        <el-button
+          type="primary"
+          @click="borrow"
+        >
+          Borrow
+        </el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -45,9 +58,9 @@ export default {
       }
     }
   },
-  mounted () {
+  async mounted () {
     this.borrowInfo.customerId = this.customerId
-    this.getBooks()
+    await this.getBooks()
   },
   methods: {
     async getBooks () {

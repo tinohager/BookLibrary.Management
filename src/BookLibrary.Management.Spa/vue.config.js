@@ -1,30 +1,30 @@
-var fs = require('fs');
-var path = require('path');
- 
-function resolve (dir) {
-  return path.join(__dirname, '.', dir)
-}
+// var fs = require('fs')
+// var path = require('path')
 
-var devServer = {};
+// function resolve (dir) {
+//  return path.join(__dirname, '.', dir)
+// }
+
+var devServer = {}
 
 if (process.env.NODE_ENV === 'development') {
   devServer = {
     host: 'localhost',
     historyApiFallback: true,
     headers: {
-      "Access-Control-Allow-Origin": "*"
+      'Access-Control-Allow-Origin': '*'
     },
-    //https: {
+    // https: {
     //  key: fs.readFileSync('./cert/private.key'),
     //  cert: fs.readFileSync('./cert/private.crt'),
-    //},
+    // },
     proxy: {
       '/api': {
         target: 'https://localhost:5001',
-        changeOrigin: true,
-      },
+        changeOrigin: true
+      }
     }
-  };
+  }
 }
 
 module.exports = {

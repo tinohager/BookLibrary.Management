@@ -1,53 +1,63 @@
 <template>
-    <div>
-      <el-table
-        :data="items">
-        <el-table-column
-          prop="bookId"
-          label="Book">
-            <template slot-scope="scope">
-              <span><strong>{{ scope.row.bookTitle }}</strong><br />{{ scope.row.bookId }}</span>
-            </template>
-        </el-table-column>
-        <el-table-column
-          prop="customerId"
-          label="CustomerId"
-          width="100">
-        </el-table-column>
-        <el-table-column
-          prop="customerName"
-          label="Customer Name">
-        </el-table-column>
-        <el-table-column
-          prop="startDate"
-          label="Start Date">
-            <template slot-scope="scope">
-              <span class="date">{{ scope.row.startDate }}</span>
-            </template>
-        </el-table-column>
-        <el-table-column
-          prop="endDate"
-          label="End Date">
-        </el-table-column>
-        <el-table-column
-          prop="durationDays"
-          label="Borrow days"
-          sortable>
-        </el-table-column>
-        <el-table-column
-          prop="feePrice"
-          label="Fee Price (€)">
-        </el-table-column>
-        <el-table-column
-          fixed="right"
-          label="Operations"
-          width="120">
-          <template slot-scope="scope">
-            <el-button type="primary" @click="returnBook(scope.row.customerId, scope.row.bookId, scope.row.startDate)">Return</el-button>
-          </template>
-        </el-table-column>
-      </el-table>
-    </div>
+  <div>
+    <el-table
+      v-loading="loading"
+      :data="items"
+    >
+      <el-table-column
+        prop="bookId"
+        label="Book"
+      >
+        <template slot-scope="scope">
+          <span><strong>{{ scope.row.bookTitle }}</strong><br>{{ scope.row.bookId }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        prop="customerId"
+        label="CustomerId"
+        width="100"
+      />
+      <el-table-column
+        prop="customerName"
+        label="Customer Name"
+      />
+      <el-table-column
+        prop="startDate"
+        label="Start Date"
+      >
+        <template slot-scope="scope">
+          <span class="date">{{ scope.row.startDate }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        prop="endDate"
+        label="End Date"
+      />
+      <el-table-column
+        prop="durationDays"
+        label="Borrow days"
+        sortable
+      />
+      <el-table-column
+        prop="feePrice"
+        label="Fee Price (€)"
+      />
+      <el-table-column
+        fixed="right"
+        label="Operations"
+        width="120"
+      >
+        <template slot-scope="scope">
+          <el-button
+            type="primary"
+            @click="returnBook(scope.row.customerId, scope.row.bookId, scope.row.startDate)"
+          >
+            Return
+          </el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+  </div>
 </template>
 
 <script>
@@ -55,7 +65,7 @@ export default {
   name: 'BorrowOutstandingList',
   data () {
     return {
-      loading: true,
+      loading: false,
       items: null
     }
   },
@@ -67,6 +77,7 @@ export default {
       this.loading = true
       const response = await this.axios.get('/api/Borrows/Outstanding')
       this.items = response.data
+      this.loading = false
     },
     async returnBook (customerId, bookId, startDate) {
       try {
