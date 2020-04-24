@@ -5,7 +5,11 @@
       :model="book"
       label-width="150px"
     >
-      <el-form-item label="ISBN">
+      <el-form-item
+        label="ISBN"
+        prop="isbn"
+        :error="getErrorForField('isbn')"
+      >
         <el-input
           v-model="book.isbn"
           placeholder="ISBN"
@@ -65,7 +69,11 @@
           placeholder="Abstract"
         />
       </el-form-item>
-      <el-form-item label="Number of copies">
+      <el-form-item
+        label="Number of copies"
+        prop="bookCount"
+        :error="getErrorForField('bookCount')"
+      >
         <el-input
           v-model.number="book.bookCount"
           type="number"
