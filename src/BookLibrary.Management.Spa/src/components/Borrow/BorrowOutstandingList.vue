@@ -74,10 +74,15 @@ export default {
   },
   methods: {
     async getItems () {
-      this.loading = true
-      const response = await this.axios.get('/api/Borrows/Outstanding')
-      this.items = response.data
-      this.loading = false
+      try {
+        this.loading = true
+        const response = await this.axios.get('/api/Borrows/Outstanding')
+        this.items = response.data
+      } catch (error) {
+
+      } finally {
+        this.loading = false
+      }
     },
     async returnBook (customerId, bookId, startDate) {
       try {
