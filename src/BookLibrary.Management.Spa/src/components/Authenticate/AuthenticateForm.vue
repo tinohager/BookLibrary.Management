@@ -53,7 +53,6 @@
 </template>
 
 <script>
-// import axios from 'axios'
 export default {
   name: 'AuthenticateForm',
   data () {
@@ -76,24 +75,20 @@ export default {
       this.password = 'customer2'
     },
     async authenticate () {
-      try {
-        const response = await this.axios.post('/api/Authentication/Authenticate', {
-          email: this.email,
-          password: this.password
-        })
-
-        this.axios.defaults.headers.common.authorization = `Bearer ${response.data.token}`
-
+      const successful = await this.$store.dispatch('authenticate', { email: this.email, password: this.password })
+      if (successful) {
         this.$notify.info({
           title: 'Success',
           message: 'Authenticate successful'
         })
-      } catch (error) {
-        this.$notify.error({
-          title: 'Error',
-          message: error.response.data.title
-        })
+        this.$router.push('/')
+        return
       }
+
+      this.$notify.error({
+        title: 'Error',
+        message: 'Authenticate failure'
+      })
     }
   }
 }

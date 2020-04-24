@@ -44,10 +44,22 @@
               <span>Borrow</span>
             </template>
           </el-menu-item>
-          <el-menu-item index="/authenticate">
+          <el-menu-item
+            v-if="!isAuthenticated"
+            index="/authenticate"
+          >
             <template slot="title">
               <i class="el-icon-user" />
               <span>Authenticate</span>
+            </template>
+          </el-menu-item>
+          <el-menu-item
+            v-if="isAuthenticated"
+            @click="clearToken"
+          >
+            <template slot="title">
+              <i class="el-icon-user" />
+              <span>Logout</span>
             </template>
           </el-menu-item>
         </el-menu>
@@ -64,6 +76,26 @@
     </el-container>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App',
+  computed: {
+    isAuthenticated () {
+      return this.$store.getters.isAuthenticated
+    }
+  },
+  created () {
+    this.$store.dispatch('tryAutoAuthenticate')
+  },
+  methods: {
+    clearToken () {
+      this.$store.dispatch('clearToken')
+      this.$router.push('/')
+    }
+  }
+}
+</script>
 
 <style>
 * {
