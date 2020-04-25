@@ -73,12 +73,7 @@
         prop="bookCount"
         :error="getErrorForField('bookCount')"
       >
-        <el-input
-          v-model.number="model.bookCount"
-          :number="true"
-          type="number"
-          placeholder="Number of copies"
-        />
+        <el-input-number v-model="model.bookCount" :min="1" :max="10"></el-input-number>
       </el-form-item>
       <el-form-item>
         <el-button
@@ -157,7 +152,8 @@ export default {
       }
 
       const keys = Object.keys(this.errors)
-      const key = keys.find(element => element.toLowerCase() === field)
+      const key = keys.find(element => element.toLowerCase() === field.toLowerCase())
+
       if (this.errors[key]) {
         return this.errors[key][0]
       }
