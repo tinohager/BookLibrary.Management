@@ -82,7 +82,7 @@ namespace BookLibrary.Management.WebApi
                 options.AddPolicy("Admin", polBuilder => polBuilder.RequireRole("admin"));
             });
 
-            services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+            services.AddControllers().AddNewtonsoftJson();//.AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
             services.AddMvc();
 
