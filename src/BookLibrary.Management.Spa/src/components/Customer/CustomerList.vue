@@ -10,6 +10,11 @@
         width="50"
       />
       <el-table-column
+        prop="gender"
+        label="Gender"
+        width="100"
+      />
+      <el-table-column
         prop="firstname"
         label="Firstname"
       />

@@ -1,8 +1,7 @@
 <template>
   <div>
     <el-form
-      ref="ruleForm"
-      :model="book"
+      :model="model"
       label-width="150px"
     >
       <el-form-item
@@ -11,7 +10,7 @@
         :error="getErrorForField('isbn')"
       >
         <el-input
-          v-model="book.isbn"
+          v-model="model.isbn"
           placeholder="ISBN"
         />
       </el-form-item>
@@ -21,7 +20,7 @@
         :error="getErrorForField('title')"
       >
         <el-input
-          v-model="book.title"
+          v-model="model.title"
           placeholder="Title"
         />
       </el-form-item>
@@ -31,7 +30,7 @@
         :error="getErrorForField('publisherId')"
       >
         <el-select
-          v-model="book.publisherId"
+          v-model="model.publisherId"
           filterable
           placeholder="Select"
         >
@@ -49,7 +48,7 @@
         :error="getErrorForField('authorIds')"
       >
         <el-select
-          v-model="book.authorIds"
+          v-model="model.authorIds"
           filterable
           multiple
           placeholder="Select"
@@ -64,7 +63,7 @@
       </el-form-item>
       <el-form-item label="Abstract">
         <el-input
-          v-model="book.abstract"
+          v-model="model.abstract"
           type="textarea"
           placeholder="Abstract"
         />
@@ -75,7 +74,8 @@
         :error="getErrorForField('bookCount')"
       >
         <el-input
-          v-model.number="book.bookCount"
+          v-model.number="model.bookCount"
+          :number="true"
           type="number"
           placeholder="Number of copies"
         />
@@ -97,7 +97,7 @@ export default {
   name: 'BookAdd',
   data () {
     return {
-      book: {
+      model: {
         isbn: null,
         title: '',
         authorIds: [],
@@ -139,7 +139,7 @@ export default {
     },
     async add () {
       try {
-        await this.axios.post('/api/Books', this.book)
+        await this.axios.post('/api/Books', this.model)
 
         this.$emit('reload')
       } catch (error) {
