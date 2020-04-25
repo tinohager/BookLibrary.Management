@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BookLibrary.Management.Contract\BookLibrary.Management.Contract.csproj" />
     <ProjectReference Include="..\BookLibrary.Management.DataAccessLayer\BookLibrary.Management.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\BookLibrary.Management.MssqlDataAccessLayer\BookLibrary.Management.MssqlDataAccessLayer.csproj" />
   </ItemGroup>
 
 </Project>
