@@ -41,6 +41,6 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         # Artifact name
-        name: 
+        name: spa
         # Directory containing files to upload
         path: dist/
