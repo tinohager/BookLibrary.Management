@@ -73,7 +73,11 @@
         prop="bookCount"
         :error="getErrorForField('bookCount')"
       >
-        <el-input-number v-model="model.bookCount" :min="1" :max="10"></el-input-number>
+        <el-input-number
+          v-model="model.bookCount"
+          :min="1"
+          :max="10"
+        />
       </el-form-item>
       <el-form-item>
         <el-button
