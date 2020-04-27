@@ -89,4 +89,4 @@ jobs:
       run: |
         docker login docker.pkg.github.com -u tinohager -p ${{ secrets.GH_TOKEN }}
         docker build . --file Dockerfile --tag docker.pkg.github.com/tinohager/booklibrary.management/booklibrary:$(date +%s)
-        docker push docker.pkg.github.com/tinohager/bookLibrary.management/booklibrary:$(date +%s)
+        docker push docker.pkg.github.com/tinohager/booklibrary.management/booklibrary:$(date +%s)
