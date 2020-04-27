@@ -81,10 +81,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Download math result for job 2
+    - name: Download api
       uses: actions/download-artifact@v1
       with:
         name: api
+    - name: Download spa
       uses: actions/download-artifact@v1
       with:
         name: spa
