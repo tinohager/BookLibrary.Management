@@ -61,11 +61,6 @@ jobs:
     - name: Build
       run: npm run build --if-present
       working-directory: ${{env.working-directory}}
-#    - name: Test
-#      run: npm test
-#      env:
-#        CI: true
-
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
@@ -91,4 +86,7 @@ jobs:
       with:
         name: spa
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag booklibrary:$(date +%s)
+      run: |
+        cat ~/GH_TOKEN.txt | docker login docker.pkg.github.com -u tinohager --password-stdin
+        docker build . --file Dockerfile --tag docker.pkg.github.com/tinohager/BookLibrary.Management/booklibrary:$(date +%s)
+        docker push docker.pkg.github.com/tinohager/BookLibrary.Management/booklibrary:$(date +%s)
