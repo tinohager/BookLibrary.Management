@@ -29,7 +29,7 @@ jobs:
       run: dotnet test --no-restore --verbosity normal
       working-directory: ${{env.working-directory}}
     - name: Publish
-      run: dotnet publish --no-restore --configuration Release --runtime alpine-x64 --output ../publish
+      run: dotnet publish --no-restore --configuration Release --output ../publish
       working-directory: ${{env.working-directory}}
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
