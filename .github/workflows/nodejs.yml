@@ -43,4 +43,4 @@ jobs:
         # Artifact name
         name: spa
         # Directory containing files to upload
-        path: dist/
+        path: ${{env.working-directory}}/dist/
