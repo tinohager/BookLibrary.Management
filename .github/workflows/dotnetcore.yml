@@ -5,8 +5,6 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-  workflow_success:
-    workflow: Node.js CI
 
 jobs:
   build:
@@ -30,3 +28,14 @@ jobs:
     - name: Test
       run: dotnet test --no-restore --verbosity normal
       working-directory: ${{env.working-directory}}
+    - name: Publish
+      run: dotnet publish --no-restore --verbosity normal --output ../publish
+      working-directory: ${{env.working-directory}}
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        # Artifact name
+        name: api
+        # Directory containing files to upload
+        path: publish/
+      
