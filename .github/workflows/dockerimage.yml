@@ -87,6 +87,6 @@ jobs:
         name: spa
     - name: Build the Docker image
       run: |
-        cat ~/GH_TOKEN.txt | docker login docker.pkg.github.com -u tinohager --password-stdin
+        docker login docker.pkg.github.com -u tinohager -p ${{ secrets.GH_TOKEN }}
         docker build . --file Dockerfile --tag docker.pkg.github.com/tinohager/BookLibrary.Management/booklibrary:$(date +%s)
         docker push docker.pkg.github.com/tinohager/BookLibrary.Management/booklibrary:$(date +%s)
