@@ -28,7 +28,7 @@ namespace BookLibrary.Management.WebApi.Controllers
         ///     {
         ///        "isbn": "978-3-499-26736-9",
         ///        "title": "Weit weg und ganz nah",
-        ///        "abstract": "... dein Mann hat sich aus dem Staub gemacht."
+        ///        "abstract": "... dein Mann hat sich aus dem Staub gemacht.",
         ///        "publisherId": 1,
         ///        "authorIds": [ 1 ],
         ///        "bookCount": 1
@@ -42,6 +42,7 @@ namespace BookLibrary.Management.WebApi.Controllers
         [HttpPost]
         [Route("")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorDetailDto))]
         [ProducesResponseType(StatusCodes.Status409Conflict, Type = typeof(ErrorDetailDto))]
         public async Task<IActionResult> AddAsync([FromBody]AddBookDto addItem, CancellationToken cancellationToken)
         {
