@@ -7,5 +7,5 @@ RUN apk add --no-cache icu-libs
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 
 COPY api .
-COPY spa ./wwwroot/ 
+COPY spa ./wwwroot/spa/
 ENTRYPOINT ["dotnet", "BookLibrary.Management.WebApi.dll"]
