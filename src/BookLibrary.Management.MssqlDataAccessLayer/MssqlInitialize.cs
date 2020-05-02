@@ -18,6 +18,8 @@ namespace BookLibrary.Management.DataAccessLayer
             this._optionsBuilder.UseSqlServer(configuration.ConnectionString);
 
             this._logger = logger;
+
+            this._logger.LogInformation(configuration.ConnectionString);
         }
 
         public async Task<bool> InitializeDatabaseAsync()

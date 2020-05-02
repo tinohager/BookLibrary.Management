@@ -17,6 +17,7 @@ namespace BookLibrary.Management.WebApi
             var builtConfig = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .AddCommandLine(args)
+                .AddEnvironmentVariables()
                 .Build();
 
             return Host.CreateDefaultBuilder(args)
