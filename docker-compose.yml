@@ -3,7 +3,7 @@ services:
     web:
         image: "docker.pkg.github.com/tinohager/booklibrary.management/booklibrary:latest"
         ports:
-            - "8000:80"
+            - "80:80"
         depends_on:
             - db
         environment:
