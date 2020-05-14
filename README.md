@@ -17,6 +17,13 @@ This is a simple prototype for a library management. You can create books, autho
  - nodejs >= v12
  - npm
 
+## Start in production
+Run this commands in the directory of the `docker-compose.yml` file.
+```
+docker-compose build
+docker-compose up
+```
+
 ## Start a sql server with docker
 
 Start Powershell and execute following command
