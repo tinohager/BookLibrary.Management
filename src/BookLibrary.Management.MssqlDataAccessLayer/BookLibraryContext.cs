@@ -27,8 +27,8 @@ namespace BookLibrary.Management.DataAccessLayer
                 .HasIndex(b => b.Email);
 
             modelBuilder.Entity<Book>()
-                   .Property(o => o.Id)
-                   .ValueGeneratedNever();
+                .Property(o => o.Id)
+                .ValueGeneratedNever();
 
             modelBuilder.Entity<Author>()
                 .Property(o => o.Id)
