@@ -76,9 +76,8 @@ namespace BookLibrary.Management.DataAccessLayer
                 item.Adapt(book);
 
                 await context.SaveChangesAsync(cancellationToken);
+                return true;
             }
-
-            return false;
         }
 
         public async Task<bool> DeleteAsync(string id, CancellationToken cancellationToken = default)

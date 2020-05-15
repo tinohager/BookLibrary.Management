@@ -75,9 +75,8 @@ namespace BookLibrary.Management.DataAccessLayer
                 item.Adapt(author);
 
                 await context.SaveChangesAsync(cancellationToken);
+                return true;
             }
-
-            return false;
         }
     }
 }
