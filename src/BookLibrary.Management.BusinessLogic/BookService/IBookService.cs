@@ -1,4 +1,4 @@
-﻿using BookLibrary.Management.Contract.Model;
+﻿using BookLibrary.Management.DataAccessLayer.Model;
 using System.Threading;
 using System.Threading.Tasks;
 

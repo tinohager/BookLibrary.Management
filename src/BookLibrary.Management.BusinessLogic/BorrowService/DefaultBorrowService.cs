@@ -1,6 +1,6 @@
 ﻿using BookLibrary.Management.BusinessLogicLayer.CustomerService;
-using BookLibrary.Management.Contract;
-using BookLibrary.Management.Contract.Model;
+using BookLibrary.Management.DataAccessLayer;
+using BookLibrary.Management.DataAccessLayer.Model;
 using Mapster;
 using System;
 using System.Linq;

@@ -1,9 +1,9 @@
-﻿using BookLibrary.Management.Contract.Model;
+﻿using BookLibrary.Management.DataAccessLayer.Model;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BookLibrary.Management.Contract
+namespace BookLibrary.Management.DataAccessLayer
 {
     public interface IBorrowHistoryRepository
     {

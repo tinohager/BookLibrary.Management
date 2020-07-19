@@ -1,4 +1,4 @@
-﻿namespace BookLibrary.Management.DataAccessLayer
+﻿namespace BookLibrary.Management.MssqlDataAccessLayer
 {
     public class MssqlConfiguration
     {

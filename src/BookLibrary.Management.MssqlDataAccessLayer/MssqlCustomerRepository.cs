@@ -1,13 +1,12 @@
-﻿using BookLibrary.Management.Contract;
-using BookLibrary.Management.Contract.Model;
-using BookLibrary.Management.DataAccessLayer;
+﻿using BookLibrary.Management.DataAccessLayer;
+using BookLibrary.Management.DataAccessLayer.Model;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BookLibrary.Management.Library.Contract
+namespace BookLibrary.Management.MssqlDataAccessLayer
 {
     public class MssqlCustomerRepository : ICustomerRepository
     {

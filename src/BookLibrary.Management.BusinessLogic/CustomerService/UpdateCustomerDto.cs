@@ -1,4 +1,4 @@
-﻿using BookLibrary.Management.Contract.Model;
+﻿using BookLibrary.Management.DataAccessLayer.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;

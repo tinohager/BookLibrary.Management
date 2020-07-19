@@ -1,7 +1,7 @@
-﻿using BookLibrary.Management.Contract.Model;
+﻿using BookLibrary.Management.DataAccessLayer.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookLibrary.Management.DataAccessLayer
+namespace BookLibrary.Management.MssqlDataAccessLayer
 {
     public class BookLibraryContext : DbContext
     {

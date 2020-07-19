@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace BookLibrary.Management.Contract.Model
+namespace BookLibrary.Management.DataAccessLayer.Model
 {
     public class Book
     {

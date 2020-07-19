@@ -1,5 +1,5 @@
-﻿using BookLibrary.Management.Contract;
-using BookLibrary.Management.Contract.Model;
+﻿using BookLibrary.Management.DataAccessLayer;
+using BookLibrary.Management.DataAccessLayer.Model;
 using Microsoft.Extensions.Logging;
 using System.Threading;
 using System.Threading.Tasks;

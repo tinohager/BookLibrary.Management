@@ -1,5 +1,4 @@
-﻿using BookLibrary.Management.Contract.Model;
-using Mapster;
+﻿using Mapster;
 
 namespace BookLibrary.Management.BusinessLogicLayer.CustomerService
 {
